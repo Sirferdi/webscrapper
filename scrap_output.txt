@@ -1,0 +1,7 @@
+2023-02-27 11:07:34.402336 | Scrapping the Website https://www.real.discount
+2023-02-27 11:08:28.195347 | Found course Desarrollo con Node.js. Aplicación, Testing y seguridad
+2023-02-27 11:08:29.500975 | Checking if the course Desarrollo con Node.js. Aplicación, Testing y seguridad is not older than 1 days
+2023-02-27 11:08:29.504977 | Checking if the course Desarrollo con Node.js. Aplicación, Testing y seguridad is still free on Udemy
+2023-02-27 11:08:44.924434 | The course Desarrollo con Node.js. Aplicación, Testing y seguridad is still free on Udemy
+2023-02-27 11:08:44.928436 | Added Desarrollo con Node.js. Aplicación, Testing y seguridad courses to CSV file.
+2023-02-27 11:08:44.929439 | Done scraping site https://www.real.discount

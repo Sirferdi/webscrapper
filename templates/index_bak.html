@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Web Scraper</title>
+</head>
+<body>
+    <h1>WEB SCRAPER</h1>
+    <form id="scrap-form" onsubmit="submitForm(event)">
+        <label for="site">Site URL:</label>
+        <input type="text" id="site" name="site" required><br><br>
+        <label for="max_courses">Max Courses:</label>
+        <input type="number" id="max_courses" name="max_courses" required><br><br>
+        <label for="max_days">Max Days:</label>
+        <input type="number" id="max_days" name="max_days" required><br><br>
+        <button type="submit">SUBMIT</button>
+    </form>
+
+    <br><br>
+    <iframe id="console-iframe" style="width: 100%; height: 400px;" src="/scrap-output"></iframe>
+    <script>
+        function submitForm(event) {
+            event.preventDefault();
+            var site = document.getElementById("site").value;
+            var max_courses = document.getElementById("max_courses").value;
+            var max_days = document.getElementById("max_days").value;
+            var queryString = "?site=" + encodeURIComponent(site) + "&mc=" + encodeURIComponent(max_courses) + "&mdo=" + encodeURIComponent(max_days);
+            var url = "/scrap" + queryString;
+            fetch(url)
+        }
+        setInterval(function() {
+        var iframe = document.getElementById("console-iframe");
+        iframe.src = iframe.src;
+        }, 5000);
+    </script>
+</body>
+</html>

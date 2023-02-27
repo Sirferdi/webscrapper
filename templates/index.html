@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Web Scraper</title>
+    <style>
+        body {
+    background-image: url("/hugo-barbosa-TnG2q8FtXsg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+        }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 50px;
+        }
+
+        form {
+            margin-top: 50px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"], input[type="number"] {
+            padding: 5px;
+            border-radius: 5px;
+            border: none;
+            width: 200px;
+            margin-bottom: 20px;
+        }
+
+        button[type="submit"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0062cc;
+        }
+
+        #download-button {
+            display: none;
+            margin-top: 50px;
+        }
+
+        iframe {
+            margin-top: 50px;
+            border: none;
+            box-shadow: 0 0 5px #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>WEB SCRAPER</h1>
+    <form id="scrap-form" onsubmit="submitForm(event)">
+        <label for="site">Site URL:</label>
+        <select id="site" name="site" required>
+            <option value="https://www.real.discount" selected>Real Discount (Udemy Courses)</option>
+            <option value="https://www.couponscorpion.com">Coupon Scorpion (Udemy Courses)</option>
+        </select><br><br>
+        <!-- <input type="text" id="site" name="site" required><br><br> -->
+        <label for="max_courses">Max Courses:</label>
+        <input type="number" id="max_courses" name="max_courses" required><br><br>
+        <label for="max_days">Max Days:</label>
+        <input type="number" id="max_days" name="max_days" required><br><br>
+        <button type="submit">SUBMIT</button>
+    </form>
+
+    <div id="download-button">
+        <a href="/download-csv" download>
+            <button type="button">DOWNLOAD CSV</button>
+        </a>
+    </div>
+
+    <br><br>
+    <iframe id="console-iframe" style="width: 80%; height: 400px;" src="/scrap-output"></iframe>
+    <script>
+        function submitForm(event) {
+            event.preventDefault();
+            var site = document.getElementById("site").value;
+            var dropsite = document.getElementById("site").value;
+            var max_courses = document.getElementById("max_courses").value;
+            var max_days = document.getElementById("max_days").value;
+            var queryString = "?site=" + encodeURIComponent(site) + "&mc=" + encodeURIComponent(max_courses) + "&mdo=" + encodeURIComponent(max_days);
+            var url = "/scrap" + queryString;
+            fetch(url).then(function(response) {
+                var downloadButton = document.getElementById("download-button");
+                downloadButton.style.display = "block";
+            });
+        }
+        setInterval(function() {
+        var iframe = document.getElementById("console-iframe");
+        iframe.src = iframe.src;
+        }, 2000);
+    </script>
+</body>
+</html>
